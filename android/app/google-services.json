@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "839977485872",
+    "project_id": "qubit-7cc0f",
+    "storage_bucket": "qubit-7cc0f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839977485872:android:42263c093895d488490ff5",
+        "android_client_info": {
+          "package_name": "com.example.qubit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839977485872-idbtcp4kk8tidrsp1bptc05805m5c4u6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.qubit",
+            "certificate_hash": "a612b0d9b832b5908805f2d882317a6a8e36287c"
+          }
+        },
+        {
+          "client_id": "839977485872-t2fhn3usqmhstv8u9eems4gidiiq7apv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu6siBdeKvNP9ahYuB5sl5qysj2_M9-G4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839977485872-t2fhn3usqmhstv8u9eems4gidiiq7apv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "839977485872-tbj0u70sels0p6qgia7b6p9vkdr7b4su.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.qubit"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839977485872:android:fd4b285b0207ce1b490ff5",
+        "android_client_info": {
+          "package_name": "com.example.qubit_geo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839977485872-t2fhn3usqmhstv8u9eems4gidiiq7apv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu6siBdeKvNP9ahYuB5sl5qysj2_M9-G4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839977485872-t2fhn3usqmhstv8u9eems4gidiiq7apv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "839977485872-tbj0u70sels0p6qgia7b6p9vkdr7b4su.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.qubit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
