@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qubit_geo/shared/controllers/app_controller.dart';
+import 'package:qubit_geo/shared/ui/scaffold/mymessages.dart';
+import 'package:qubit_geo/shared/ui/users/useraction/useraction.dart';
 
 class MyAppBar {
   PreferredSizeWidget appBar(BuildContext context) {
@@ -27,7 +29,21 @@ class MyAppBar {
         ),
       ),
       backgroundColor: ColorScheme.of(context).primary,
-      actions: [],
+      foregroundColor: ColorScheme.of(context).onPrimary,
+      actions: [
+        Obx(
+          () => Visibility(
+            visible: appController.appBarActionsVisible.value,
+            child: MyMessages(),
+          ),
+        ),
+        Obx(
+          () => Visibility(
+            visible: appController.appBarActionsVisible.value,
+            child: UserAction(),
+          ),
+        ),
+      ],
     );
   }
 }
