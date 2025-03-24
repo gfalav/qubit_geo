@@ -6,7 +6,17 @@ import 'package:qubit_geo/shared/ui/scaffold/my_body.dart';
 import 'package:qubit_geo/shared/ui/scaffold/my_drawer.dart';
 
 class MyScaffold extends StatelessWidget {
-  const MyScaffold({super.key});
+  final Widget left;
+  final Widget main;
+  final Widget right;
+  final Widget bottom;
+  const MyScaffold({
+    super.key,
+    required this.left,
+    required this.main,
+    required this.right,
+    required this.bottom,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +37,7 @@ class MyScaffold extends StatelessWidget {
                     appController.devType.value == 'Mobile'
                 ? MyDrawer()
                 : null,
-        body: MyBody(),
+        body: MyBody(left: left, main: main, right: right, bottom: bottom),
       ),
     );
   }

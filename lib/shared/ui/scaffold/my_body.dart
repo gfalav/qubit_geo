@@ -3,7 +3,17 @@ import 'package:get/get.dart';
 import 'package:qubit_geo/shared/controllers/app_controller.dart';
 
 class MyBody extends StatelessWidget {
-  const MyBody({super.key});
+  final Widget left;
+  final Widget main;
+  final Widget right;
+  final Widget bottom;
+  const MyBody({
+    super.key,
+    required this.left,
+    required this.main,
+    required this.right,
+    required this.bottom,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +33,8 @@ class MyBody extends StatelessWidget {
                     width:
                         appController.totalWidth.value *
                         appController.leftPanelWidth.value,
-                    color: Colors.amber,
-                    child: Text("Izquierda"),
+                    color: ColorScheme.of(context).primaryContainer,
+                    child: left,
                   ),
                   Container(
                     width:
@@ -32,15 +42,15 @@ class MyBody extends StatelessWidget {
                         (1 -
                             appController.leftPanelWidth.value -
                             appController.rightPanelWidth.value),
-                    color: Colors.green,
-                    child: Text("Centro"),
+                    color: ColorScheme.of(context).secondaryContainer,
+                    child: main,
                   ),
                   Container(
                     width:
                         appController.totalWidth.value *
                         appController.rightPanelWidth.value,
-                    color: Colors.cyan,
-                    child: Text("Derecha"),
+                    color: ColorScheme.of(context).tertiaryContainer,
+                    child: right,
                   ),
                 ],
               ),
@@ -48,8 +58,8 @@ class MyBody extends StatelessWidget {
             Container(
               width: appController.totalWidth.value,
               height: 48,
-              color: Colors.blue,
-              child: Text("Abajo"),
+              color: ColorScheme.of(context).surfaceContainer,
+              child: bottom,
             ),
           ],
         ),

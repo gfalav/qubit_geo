@@ -24,6 +24,11 @@ class Home extends StatelessWidget {
         0.3,
       );
     });
-    return MyScaffold();
+    return MyScaffold(
+      left: Center(child: Text("Left")),
+      main: Center(child: Text("Main")),
+      right: Center(child: Text("Right")),
+      bottom: Center(child: Text("Bottom")),
+    );
   }
 }

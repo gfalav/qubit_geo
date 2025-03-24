@@ -26,7 +26,7 @@ class MyAppBar {
           ],
         ),
       ),
-      backgroundColor: ColorScheme.of(context).secondaryContainer,
+      backgroundColor: ColorScheme.of(context).primary,
       actions: [],
     );
   }
