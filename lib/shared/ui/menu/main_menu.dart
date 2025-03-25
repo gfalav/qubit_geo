@@ -14,7 +14,7 @@ class MainMenu extends StatelessWidget {
         children: [
           EnterpriseLogo(),
           Accordion(
-            headerBackgroundColor: ColorScheme.of(context).secondaryContainer,
+            headerBackgroundColor: ColorScheme.of(context).secondary,
             paddingBetweenClosedSections: 0,
             paddingBetweenOpenSections: 0,
             paddingListTop: 0,
@@ -23,13 +23,21 @@ class MainMenu extends StatelessWidget {
             children: [
               AccordionSection(
                 header: ListTile(
-                  leading: Icon(Icons.map_rounded),
-                  title: Text("Mapa"),
+                  leading: Icon(
+                    Icons.map_rounded,
+                    color: ColorScheme.of(context).onSecondary,
+                  ),
+                  title: Text(
+                    "Mapa",
+                    style: TextStyle(
+                      color: ColorScheme.of(context).onSecondary,
+                    ),
+                  ),
                   onTap: () async {
                     await Get.toNamed("/map");
                   },
                 ),
-                content: Text("Content"),
+                content: SizedBox(),
               ),
             ],
           ),
