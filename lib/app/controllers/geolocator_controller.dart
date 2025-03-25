@@ -1,9 +1,10 @@
+import 'dart:async';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 
 class GeolocatorController extends GetxController {
   final lat = 0.0.obs;
-  final lon = 0.0.obs;
+  final long = 0.0.obs;
   final accuracy = 0.0.obs;
   final altitude = 0.0.obs;
   final speed = 0.0.obs;
@@ -12,17 +13,39 @@ class GeolocatorController extends GetxController {
   void onInit() {
     super.onInit();
     getLocation();
+    subscriptionGPS();
+  }
+
+  void subscriptionGPS() async {
+    final LocationSettings locationSettings = LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 100,
+    );
+
+    Geolocator.getPositionStream(locationSettings: locationSettings).listen((
+      Position? position,
+    ) {
+      if (position != null) {
+        setLocation(
+          position.latitude,
+          position.longitude,
+          position.accuracy,
+          position.altitude,
+          position.speed,
+        );
+      }
+    });
   }
 
   void setLocation(
     double lat,
-    double lon,
+    double long,
     double accuracy,
     double altitude,
     double speed,
   ) {
     this.lat.value = lat;
-    this.lon.value = lon;
+    this.long.value = long;
     this.accuracy.value = accuracy;
     this.altitude.value = altitude;
     this.speed.value = speed;

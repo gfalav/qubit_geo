@@ -10,12 +10,14 @@ class MyScaffold extends StatelessWidget {
   final Widget main;
   final Widget right;
   final Widget bottom;
+  final Widget? floatingActionButton;
   const MyScaffold({
     super.key,
     required this.left,
     required this.main,
     required this.right,
     required this.bottom,
+    this.floatingActionButton,
   });
 
   @override
@@ -38,6 +40,10 @@ class MyScaffold extends StatelessWidget {
                 ? MyDrawer()
                 : null,
         body: MyBody(left: left, main: main, right: right, bottom: bottom),
+        floatingActionButton: Padding(
+          padding: EdgeInsets.only(bottom: 70),
+          child: floatingActionButton,
+        ),
       ),
     );
   }

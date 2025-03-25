@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:qubit_geo/app/controllers/geolocator_controller.dart';
+import 'package:qubit_geo/app/controllers/default_map_controller.dart';
+import 'package:qubit_geo/app/ui/maps/default_map_detail.dart';
 import 'package:qubit_geo/shared/controllers/app_controller.dart';
 import 'package:qubit_geo/shared/ui/menu/main_menu.dart';
 import 'package:qubit_geo/shared/ui/scaffold/my_scaffold.dart';
 
-class GeolocatorData extends StatelessWidget {
-  const GeolocatorData({super.key});
+class DefaultMap extends StatelessWidget {
+  const DefaultMap({super.key});
 
   @override
   Widget build(BuildContext context) {
     final AppController appController = Get.put(AppController());
-    final GeolocatorController geolocatorController = Get.put(
-      GeolocatorController(),
+    final DefaultMapController defaultMapController = Get.put(
+      DefaultMapController(),
     );
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       appController.setAppBarState(
-        'Geolocator',
+        'Mapa',
         0xe366,
         true,
         true,
@@ -29,16 +30,16 @@ class GeolocatorData extends StatelessWidget {
         0.0,
       );
     });
-    return Obx(
-      () => MyScaffold(
-        left: MainMenu(),
-        main: Center(
-          child: Text(
-            "Latitude: ${geolocatorController.lat.value}, Longitude: ${geolocatorController.long.value}, Accuracy: ${geolocatorController.accuracy.value}",
-          ),
-        ),
-        right: Center(child: Text("Right")),
-        bottom: Center(child: Text("Bottom")),
+    return MyScaffold(
+      left: MainMenu(),
+      main: DefaultMapDetail(),
+      right: Center(child: Text("Right")),
+      bottom: SizedBox(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          defaultMapController.moveUserPosition();
+        },
+        child: Icon(Icons.my_location),
       ),
     );
   }

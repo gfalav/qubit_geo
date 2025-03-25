@@ -1,6 +1,7 @@
 import 'package:accordion/accordion.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:qubit_geo/shared/controllers/app_controller.dart';
 import 'package:qubit_geo/shared/ui/logo/enterprise_logo.dart';
 
 class MainMenu extends StatelessWidget {
@@ -8,6 +9,8 @@ class MainMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppController appController = Get.put(AppController());
+
     return Container(
       color: Colors.white,
       child: Column(
@@ -34,7 +37,20 @@ class MainMenu extends StatelessWidget {
                     ),
                   ),
                   onTap: () async {
-                    await Get.toNamed("/geolocator");
+                    await Get.toNamed("/map");
+                    appController.setAppBarState(
+                      'Home',
+                      0xe318,
+                      true,
+                      true,
+                      true,
+                      true,
+                      true,
+                      true,
+                      290 / appController.totalWidth.value,
+                      0.3,
+                    );
+                    Get.offAllNamed("/home");
                   },
                 ),
                 content: SizedBox(),
