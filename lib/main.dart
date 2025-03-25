@@ -3,6 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
+import 'package:qubit_geo/app/ui/maps/geolocator_data.dart';
 import 'package:qubit_geo/shared/controllers/user_controller.dart';
 import 'package:qubit_geo/shared/ui/home/home.dart';
 import 'package:qubit_geo/shared/ui/unknown_page/unknown_page.dart';
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/changepwd", page: () => ChangePassword()),
         GetPage(name: "/updateuser", page: () => ChangeUsrName()),
         GetPage(name: "/changephoto", page: () => ChangePhotoUsr()),
+        GetPage(name: "/geolocator", page: () => GeolocatorData()),
       ],
     );
   }

@@ -34,7 +34,7 @@ class MainMenu extends StatelessWidget {
                     ),
                   ),
                   onTap: () async {
-                    await Get.toNamed("/map");
+                    await Get.toNamed("/geolocator");
                   },
                 ),
                 content: SizedBox(),
