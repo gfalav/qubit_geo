@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:qubit_geo/shared/controllers/app_controller.dart';
 import 'package:qubit_geo/shared/ui/scaffold/my_scaffold.dart';
 
 class UnknownPage extends StatelessWidget {
