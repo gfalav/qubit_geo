@@ -21,7 +21,7 @@ class Home extends StatelessWidget {
         true,
         true,
         true,
-        0.3,
+        290 / appController.totalWidth.value,
         0.3,
       );
     });

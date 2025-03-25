@@ -43,18 +43,16 @@ class MyBody extends StatelessWidget {
                         child: left,
                       ),
                     ),
-                    SingleChildScrollView(
-                      child: Container(
-                        width:
-                            appController.devType.value != 'Mobile'
-                                ? appController.totalWidth.value *
-                                    (1 -
-                                        appController.leftPanelWidth.value -
-                                        appController.rightPanelWidth.value)
-                                : appController.totalWidth.value,
-                        color: ColorScheme.of(context).secondaryContainer,
-                        child: main,
-                      ),
+                    Container(
+                      width:
+                          appController.devType.value != 'Mobile'
+                              ? appController.totalWidth.value *
+                                  (1 -
+                                      appController.leftPanelWidth.value -
+                                      appController.rightPanelWidth.value)
+                              : appController.totalWidth.value,
+                      color: ColorScheme.of(context).secondaryContainer,
+                      child: main,
                     ),
                     Visibility(
                       visible:

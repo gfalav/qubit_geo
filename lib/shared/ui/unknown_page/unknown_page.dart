@@ -8,25 +8,14 @@ class UnknownPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppController appController = Get.put(AppController());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      appController.setAppBarState(
-        'Error!!',
-        0xe318,
-        false,
-        true,
-        true,
-        false,
-        false,
-        false,
-        0.0,
-        0.0,
-      );
-    });
     return MyScaffold(
       left: SizedBox(),
-      main: Center(child: Text("Error - Page not found")),
+      main: Center(
+        child: Text(
+          "Error - Page not found",
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+        ),
+      ),
       right: SizedBox(),
       bottom: SizedBox(),
     );
