@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qubit_geo/shared/controllers/app_controller.dart';
-import 'package:qubit_geo/shared/ui/menu/main_menu.dart';
 import 'package:qubit_geo/shared/ui/scaffold/my_scaffold.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class UnknownPage extends StatelessWidget {
+  const UnknownPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,23 +12,23 @@ class Home extends StatelessWidget {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       appController.setAppBarState(
-        'Home',
+        'Error!!',
         0xe318,
+        false,
         true,
         true,
-        true,
-        true,
-        true,
-        true,
-        0.3,
-        0.3,
+        false,
+        false,
+        false,
+        0.0,
+        0.0,
       );
     });
     return MyScaffold(
-      left: MainMenu(),
-      main: Center(child: Text("Main")),
-      right: Center(child: Text("Right")),
-      bottom: Center(child: Text("Bottom")),
+      left: SizedBox(),
+      main: Center(child: Text("Error - Page not found")),
+      right: SizedBox(),
+      bottom: SizedBox(),
     );
   }
 }

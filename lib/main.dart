@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:qubit_geo/shared/controllers/user_controller.dart';
 import 'package:qubit_geo/shared/ui/home/home.dart';
+import 'package:qubit_geo/shared/ui/unknown_page/unknown_page.dart';
 import 'package:qubit_geo/shared/ui/users/change_password.dart';
 import 'package:qubit_geo/shared/ui/users/change_photo_usr.dart';
 import 'package:qubit_geo/shared/ui/users/change_usr_name.dart';
@@ -39,12 +40,13 @@ class MyApp extends StatelessWidget {
 
     MaterialTheme theme = MaterialTheme(textTheme);
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Qubit Geo',
       debugShowCheckedModeBanner: false,
       theme: brightness == Brightness.light ? theme.light() : theme.dark(),
       onReady: () => userController.initRouteIsLogged(),
       home: Home(),
-      initialRoute: '/',
+      initialRoute: '/home',
+      unknownRoute: GetPage(name: "/notfound", page: () => UnknownPage()),
       getPages: [
         GetPage(name: "/home", page: () => Home()),
         GetPage(name: "/signin", page: () => SignIn()),
