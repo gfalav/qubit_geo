@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
-import 'package:qubit_geo/app/ui/maps/mapa.dart';
+import 'package:qubit_geo/app/ui/maps/map_view.dart';
 import 'package:qubit_geo/shared/controllers/user_controller.dart';
 import 'package:qubit_geo/shared/ui/home/home.dart';
 import 'package:qubit_geo/shared/ui/unknown_page/unknown_page.dart';
@@ -20,7 +21,7 @@ import 'package:qubit_geo/shared/ui/theme/util.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  //await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
   await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
   FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
   runApp(const MyApp());
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/changepwd", page: () => ChangePassword()),
         GetPage(name: "/updateuser", page: () => ChangeUsrName()),
         GetPage(name: "/changephoto", page: () => ChangePhotoUsr()),
-        GetPage(name: "/map", page: () => Mapa()),
+        GetPage(name: "/map", page: () => MapView()),
       ],
     );
   }
