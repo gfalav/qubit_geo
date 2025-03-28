@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:qubit_geo/shared/controllers/user_controller.dart';
 
 class GeolocatorController extends GetxController {
   final lat = 0.0.obs;
@@ -7,6 +9,10 @@ class GeolocatorController extends GetxController {
   final speed = 0.0.obs;
   final alt = 0.0.obs;
   final accur = 0.0.obs;
+  final recordPositionEnabled = false.obs;
+
+  final db = FirebaseFirestore.instance;
+  final UserController userController = Get.put(UserController());
 
   @override
   void onInit() {
@@ -27,11 +33,25 @@ class GeolocatorController extends GetxController {
               position.longitude,
             ) >
             10) {
+          //actualiza position
           lat.value = position.latitude;
           lng.value = position.longitude;
           speed.value = position.speed;
           alt.value = position.altitude;
           accur.value = position.accuracy;
+          //guarda en firestore
+          if (recordPositionEnabled.value) {
+            final pos = <String, dynamic>{
+              'date': position.timestamp,
+              'lat': position.latitude,
+              'lng': position.longitude,
+              'name': userController.displayName.value,
+            };
+            db
+                .collection('lastPosition')
+                .doc(userController.uid.toString())
+                .set(pos);
+          }
         }
       }
     });

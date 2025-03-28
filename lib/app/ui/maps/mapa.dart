@@ -3,25 +3,27 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:qubit_geo/app/controllers/geolocator_controller.dart';
+import 'package:qubit_geo/shared/ui/users/useraction/circle_user.dart';
 
 class Mapa extends StatelessWidget {
-  Mapa({super.key});
-
-  final MapController mapController = MapController();
-  final GeolocatorController geolocatorController = Get.put(
-    GeolocatorController(),
-  );
-  final List<Marker> markers = [];
-  final zoomLevel = 19.0;
+  const Mapa({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final MapController mapController = MapController();
+    final GeolocatorController geolocatorController = Get.put(
+      GeolocatorController(),
+    );
+
+    final zoomLevel = 19.0;
+
     everAll([geolocatorController.lat, geolocatorController.lng], (_) {
       mapController.move(
         LatLng(geolocatorController.lat.value, geolocatorController.lng.value),
         zoomLevel,
       );
     });
+
     return Obx(
       () => Scaffold(
         floatingActionButton: FloatingActionButton(
@@ -53,7 +55,7 @@ class Mapa extends StatelessWidget {
                     geolocatorController.lat.value,
                     geolocatorController.lng.value,
                   ),
-                  child: Icon(Icons.location_pin),
+                  child: CircleUser(),
                 ),
               ],
             ),
