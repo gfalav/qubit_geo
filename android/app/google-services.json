@@ -39,10 +39,10 @@
               "client_type": 3
             },
             {
-              "client_id": "839977485872-tbj0u70sels0p6qgia7b6p9vkdr7b4su.apps.googleusercontent.com",
+              "client_id": "839977485872-t67mn20g991rcal86cipk67p3hokpcrp.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.qubit"
+                "bundle_id": "com.example.qubitGeo"
               }
             }
           ]
@@ -75,10 +75,10 @@
               "client_type": 3
             },
             {
-              "client_id": "839977485872-tbj0u70sels0p6qgia7b6p9vkdr7b4su.apps.googleusercontent.com",
+              "client_id": "839977485872-t67mn20g991rcal86cipk67p3hokpcrp.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.qubit"
+                "bundle_id": "com.example.qubitGeo"
               }
             }
           ]
