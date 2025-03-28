@@ -7,6 +7,7 @@ import 'package:qubit_geo/shared/ui/users/useraction/circle_user.dart';
 
 class MapDetail extends StatelessWidget {
   MapDetail({super.key});
+
   final MapController mapController = MapController();
   final GeolocatorController geolocatorController = Get.put(
     GeolocatorController(),
@@ -23,12 +24,12 @@ class MapDetail extends StatelessWidget {
       );
     });
 
-    ever(geolocatorController.flagUpdate, (_) {
+    ever(geolocatorController.setOriginFlag, (_) {
       mapController.move(
         LatLng(geolocatorController.lat.value, geolocatorController.lng.value),
         zoomLevel,
       );
-      geolocatorController.flagUpdate.value = false;
+      geolocatorController.setOriginFlag.value = false;
     });
 
     return Obx(

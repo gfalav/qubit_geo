@@ -9,7 +9,7 @@ class GeolocatorController extends GetxController {
   final speed = 0.0.obs;
   final alt = 0.0.obs;
   final accur = 0.0.obs;
-  final flagUpdate = false.obs;
+  final setOriginFlag = false.obs;
   final recordPositionEnabled = false.obs;
 
   final db = FirebaseFirestore.instance;

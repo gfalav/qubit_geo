@@ -37,8 +37,8 @@ class MapView extends StatelessWidget {
       bottom: Center(child: Text("Bottom")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          geolocatorController.flagUpdate.value =
-              !geolocatorController.flagUpdate.value;
+          geolocatorController.setOriginFlag.value =
+              !geolocatorController.setOriginFlag.value;
         },
         child: Icon(Icons.my_location),
       ),
