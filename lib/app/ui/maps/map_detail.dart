@@ -15,33 +15,51 @@ class MapDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double zoomLevel = 19.0;
-
     everAll([geolocatorController.lat, geolocatorController.lng], (_) {
+      print("se movió");
       mapController.move(
         LatLng(geolocatorController.lat.value, geolocatorController.lng.value),
-        zoomLevel,
+        mapController.camera.zoom,
       );
     });
 
     ever(geolocatorController.setOriginFlag, (_) {
       mapController.move(
         LatLng(geolocatorController.lat.value, geolocatorController.lng.value),
-        zoomLevel,
+        mapController.camera.zoom,
       );
       geolocatorController.setOriginFlag.value = false;
+    });
+
+    ever(geolocatorController.rotationFlag, (_) {
+      mapController.moveAndRotate(
+        mapController.camera.center,
+        mapController.camera.zoom,
+        0,
+      );
+      geolocatorController.rotationFlag.value = false;
+    });
+
+    ever(geolocatorController.zoomIn, (_) {
+      mapController.move(
+        mapController.camera.center,
+        mapController.camera.zoom < 18 ? mapController.camera.zoom + 1 : 19,
+      );
+      geolocatorController.zoomIn.value = false;
+    });
+
+    ever(geolocatorController.zoomOut, (_) {
+      mapController.move(
+        mapController.camera.center,
+        mapController.camera.zoom > 3 ? mapController.camera.zoom - 1 : 2,
+      );
+      geolocatorController.zoomOut.value = false;
     });
 
     return Obx(
       () => FlutterMap(
         mapController: mapController,
-        options: MapOptions(
-          initialCenter: LatLng(0, 0),
-          initialZoom: zoomLevel,
-          onPositionChanged: (camera, hasGesture) {
-            zoomLevel = camera.zoom;
-          },
-        ),
+        options: MapOptions(initialCenter: LatLng(0, 0), initialZoom: 19),
         children: [
           TileLayer(
             urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',

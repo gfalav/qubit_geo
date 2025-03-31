@@ -9,8 +9,18 @@ class GeolocatorController extends GetxController {
   final speed = 0.0.obs;
   final alt = 0.0.obs;
   final accur = 0.0.obs;
+
+  final recordPositionEnabled = false.obs; //Graba o no en BD la posición
+
+  //map origin to current location
   final setOriginFlag = false.obs;
-  final recordPositionEnabled = false.obs;
+
+  //map rotation
+  final rotationFlag = false.obs;
+
+  //zoom level
+  final zoomIn = false.obs;
+  final zoomOut = false.obs;
 
   final db = FirebaseFirestore.instance;
   final UserController userController = Get.put(UserController());
@@ -40,18 +50,21 @@ class GeolocatorController extends GetxController {
           speed.value = position.speed;
           alt.value = position.altitude;
           accur.value = position.accuracy;
-          //guarda en firestore
+          //guarda en firestore si está activa la flag
           if (recordPositionEnabled.value) {
             final pos = <String, dynamic>{
               'date': position.timestamp,
               'lat': position.latitude,
               'lng': position.longitude,
+              'speed': position.speed,
+              'accuracy': position.accuracy,
               'name': userController.displayName.value,
             };
             db
                 .collection('lastPosition')
                 .doc(userController.uid.toString())
                 .set(pos);
+            db.collection('positions').add(pos);
           }
         }
       }

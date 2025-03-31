@@ -35,12 +35,58 @@ class MapView extends StatelessWidget {
       main: MapDetail(),
       right: Center(child: Text("Right")),
       bottom: Center(child: Text("Bottom")),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          geolocatorController.setOriginFlag.value =
-              !geolocatorController.setOriginFlag.value;
-        },
-        child: Icon(Icons.my_location),
+      floatingActionButton: Obx(
+        () => Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: Switch(
+                value: geolocatorController.recordPositionEnabled.value,
+                onChanged: (event) {
+                  geolocatorController.recordPositionEnabled.value = event;
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: FloatingActionButton(
+                onPressed: () {
+                  geolocatorController.rotationFlag.value = true;
+                },
+                child: Icon(Icons.explore),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: FloatingActionButton(
+                onPressed: () {
+                  geolocatorController.zoomIn.value = true;
+                },
+                child: Icon(Icons.zoom_in),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: FloatingActionButton(
+                onPressed: () {
+                  geolocatorController.zoomOut.value = true;
+                },
+                child: Icon(Icons.zoom_out),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 5),
+              child: FloatingActionButton(
+                onPressed: () {
+                  geolocatorController.setOriginFlag.value =
+                      !geolocatorController.setOriginFlag.value;
+                },
+                child: Icon(Icons.my_location),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
