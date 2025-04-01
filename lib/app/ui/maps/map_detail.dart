@@ -16,7 +16,6 @@ class MapDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     everAll([geolocatorController.lat, geolocatorController.lng], (_) {
-      print("se movió");
       mapController.move(
         LatLng(geolocatorController.lat.value, geolocatorController.lng.value),
         mapController.camera.zoom,
