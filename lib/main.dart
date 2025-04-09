@@ -21,9 +21,9 @@ import 'package:qubit_geo/shared/ui/theme/util.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-  await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
-  FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+  //await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+  //await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
+  //FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
   runApp(const MyApp());
 }
 

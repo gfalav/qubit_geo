@@ -7,16 +7,16 @@ import 'package:qubit_geo/app/controllers/my_map_controller.dart';
 import 'package:qubit_geo/shared/ui/users/useraction/circle_user.dart';
 
 class MapDetail extends StatelessWidget {
-  MapDetail({super.key});
-
-  final MapController mapController = MapController();
-  final MyMapController myMapController = Get.put(MyMapController());
-  final GeolocatorController geolocatorController = Get.put(
-    GeolocatorController(),
-  );
+  const MapDetail({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final MapController mapController = MapController();
+    final MyMapController myMapController = Get.put(MyMapController());
+    final GeolocatorController geolocatorController = Get.put(
+      GeolocatorController(),
+    );
+
     everAll([geolocatorController.lat, geolocatorController.lng], (_) {
       mapController.move(
         LatLng(geolocatorController.lat.value, geolocatorController.lng.value),
