@@ -51,14 +51,55 @@ class MyApp extends StatelessWidget {
       initialRoute: '/home',
       unknownRoute: GetPage(name: "/notfound", page: () => UnknownPage()),
       getPages: [
-        GetPage(name: "/home", page: () => Home()),
-        GetPage(name: "/signin", page: () => SignIn()),
-        GetPage(name: "/signup", page: () => SignUp()),
-        GetPage(name: "/pwdreset", page: () => ResetPassword()),
-        GetPage(name: "/changepwd", page: () => ChangePassword()),
-        GetPage(name: "/updateuser", page: () => ChangeUsrName()),
-        GetPage(name: "/changephoto", page: () => ChangePhotoUsr()),
-        GetPage(name: "/map", page: () => MapView()),
+        GetPage(
+          name: "/home",
+          page: () => Home(),
+          transition: Transition.leftToRightWithFade,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: "/signin",
+          page: () => SignIn(),
+          transition: Transition.fadeIn,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: "/signup",
+          page: () => SignUp(),
+          transition: Transition.fadeIn,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: "/pwdreset",
+          page: () => ResetPassword(),
+          transition: Transition.fadeIn,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: "/changepwd",
+          page: () => ChangePassword(),
+          transition: Transition.leftToRightWithFade,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: "/updateuser",
+          page: () => ChangeUsrName(),
+          transition: Transition.leftToRightWithFade,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: "/changephoto",
+          page: () => ChangePhotoUsr(),
+          transition: Transition.leftToRightWithFade,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
+
+        GetPage(
+          name: "/map",
+          page: () => MapView(),
+          transition: Transition.leftToRightWithFade,
+          transitionDuration: const Duration(milliseconds: 500),
+        ),
       ],
     );
   }

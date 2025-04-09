@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qubit_geo/app/controllers/geolocator_controller.dart';
+import 'package:qubit_geo/app/controllers/my_map_controller.dart';
 import 'package:qubit_geo/app/ui/maps/map_detail.dart';
 import 'package:qubit_geo/shared/controllers/app_controller.dart';
 import 'package:qubit_geo/shared/ui/menu/main_menu.dart';
@@ -12,6 +13,7 @@ class MapView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppController appController = Get.put(AppController());
+    final MyMapController myMapController = Get.put(MyMapController());
     final GeolocatorController geolocatorController = Get.put(
       GeolocatorController(),
     );
@@ -51,8 +53,9 @@ class MapView extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: FloatingActionButton(
+                heroTag: 'rotation',
                 onPressed: () {
-                  geolocatorController.rotationFlag.value = true;
+                  myMapController.rotationFlag.value = true;
                 },
                 child: Icon(Icons.explore),
               ),
@@ -60,8 +63,9 @@ class MapView extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: FloatingActionButton(
+                heroTag: 'zoomIn',
                 onPressed: () {
-                  geolocatorController.zoomIn.value = true;
+                  myMapController.zoomIn.value = true;
                 },
                 child: Icon(Icons.zoom_in),
               ),
@@ -69,8 +73,9 @@ class MapView extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: FloatingActionButton(
+                heroTag: 'zoomOut',
                 onPressed: () {
-                  geolocatorController.zoomOut.value = true;
+                  myMapController.zoomOut.value = true;
                 },
                 child: Icon(Icons.zoom_out),
               ),
@@ -78,9 +83,10 @@ class MapView extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 5),
               child: FloatingActionButton(
+                heroTag: 'center',
                 onPressed: () {
-                  geolocatorController.setOriginFlag.value =
-                      !geolocatorController.setOriginFlag.value;
+                  myMapController.setOriginFlag.value =
+                      !myMapController.setOriginFlag.value;
                 },
                 child: Icon(Icons.my_location),
               ),

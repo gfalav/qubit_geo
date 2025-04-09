@@ -5,6 +5,9 @@ import 'package:get/get.dart';
 import 'package:qubit_geo/shared/controllers/user_controller.dart';
 
 class GeolocatorController extends GetxController {
+  final db = FirebaseFirestore.instance;
+  final UserController userController = Get.put(UserController());
+
   final lat = 0.0.obs;
   final lng = 0.0.obs;
   final speed = 0.0.obs;
@@ -13,21 +16,8 @@ class GeolocatorController extends GetxController {
 
   final recordPositionEnabled = false.obs; //Graba o no en BD la posición
 
-  //map origin to current location
-  final setOriginFlag = false.obs;
-
-  //map rotation
-  final rotationFlag = false.obs;
-
-  //zoom level
-  final zoomIn = false.obs;
-  final zoomOut = false.obs;
-
-  final db = FirebaseFirestore.instance;
-  final UserController userController = Get.put(UserController());
-
   @override
-  void onInit() {
+  void onInit() async {
     late LocationSettings locationSettings;
 
     if (defaultTargetPlatform == TargetPlatform.android) {
@@ -70,6 +60,7 @@ class GeolocatorController extends GetxController {
     ) {
       updatePosition(position);
     });
+    await getPosition();
     super.onInit();
   }
 

@@ -3,12 +3,14 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:qubit_geo/app/controllers/geolocator_controller.dart';
+import 'package:qubit_geo/app/controllers/my_map_controller.dart';
 import 'package:qubit_geo/shared/ui/users/useraction/circle_user.dart';
 
 class MapDetail extends StatelessWidget {
   MapDetail({super.key});
 
   final MapController mapController = MapController();
+  final MyMapController myMapController = Get.put(MyMapController());
   final GeolocatorController geolocatorController = Get.put(
     GeolocatorController(),
   );
@@ -22,37 +24,37 @@ class MapDetail extends StatelessWidget {
       );
     });
 
-    ever(geolocatorController.setOriginFlag, (_) {
+    ever(myMapController.setOriginFlag, (_) {
       mapController.move(
         LatLng(geolocatorController.lat.value, geolocatorController.lng.value),
         mapController.camera.zoom,
       );
-      geolocatorController.setOriginFlag.value = false;
+      myMapController.setOriginFlag.value = false;
     });
 
-    ever(geolocatorController.rotationFlag, (_) {
+    ever(myMapController.rotationFlag, (_) {
       mapController.moveAndRotate(
         mapController.camera.center,
         mapController.camera.zoom,
         0,
       );
-      geolocatorController.rotationFlag.value = false;
+      myMapController.rotationFlag.value = false;
     });
 
-    ever(geolocatorController.zoomIn, (_) {
+    ever(myMapController.zoomIn, (_) {
       mapController.move(
         mapController.camera.center,
         mapController.camera.zoom < 18 ? mapController.camera.zoom + 1 : 19,
       );
-      geolocatorController.zoomIn.value = false;
+      myMapController.zoomIn.value = false;
     });
 
-    ever(geolocatorController.zoomOut, (_) {
+    ever(myMapController.zoomOut, (_) {
       mapController.move(
         mapController.camera.center,
         mapController.camera.zoom > 3 ? mapController.camera.zoom - 1 : 2,
       );
-      geolocatorController.zoomOut.value = false;
+      myMapController.zoomOut.value = false;
     });
 
     return Obx(
