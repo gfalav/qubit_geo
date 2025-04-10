@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:qubit_geo/app/controllers/geolocator_controller.dart';
 import 'package:qubit_geo/app/controllers/my_map_controller.dart';
+import 'package:qubit_geo/shared/controllers/geolocator_controller.dart';
 import 'package:qubit_geo/shared/ui/users/useraction/circle_user.dart';
 
 class MapDetail extends StatelessWidget {
@@ -57,10 +57,18 @@ class MapDetail extends StatelessWidget {
       myMapController.zoomOut.value = false;
     });
 
+    geolocatorController.getPosition();
+
     return Obx(
       () => FlutterMap(
         mapController: mapController,
-        options: MapOptions(initialCenter: LatLng(0, 0), initialZoom: 19),
+        options: MapOptions(
+          initialCenter: LatLng(
+            geolocatorController.lat.value,
+            geolocatorController.lng.value,
+          ),
+          initialZoom: 19,
+        ),
         children: [
           TileLayer(
             urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',

@@ -1,87 +1,26 @@
 {
   "project_info": {
-    "project_number": "839977485872",
-    "project_id": "qubit-7cc0f",
-    "storage_bucket": "qubit-7cc0f.firebasestorage.app"
+    "project_number": "128707301604",
+    "project_id": "qubit-d81a7",
+    "storage_bucket": "qubit-d81a7.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:839977485872:android:42263c093895d488490ff5",
-        "android_client_info": {
-          "package_name": "com.example.qubit"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "839977485872-idbtcp4kk8tidrsp1bptc05805m5c4u6.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.qubit",
-            "certificate_hash": "a612b0d9b832b5908805f2d882317a6a8e36287c"
-          }
-        },
-        {
-          "client_id": "839977485872-t2fhn3usqmhstv8u9eems4gidiiq7apv.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAu6siBdeKvNP9ahYuB5sl5qysj2_M9-G4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "839977485872-t2fhn3usqmhstv8u9eems4gidiiq7apv.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "839977485872-t67mn20g991rcal86cipk67p3hokpcrp.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.qubitGeo"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:839977485872:android:fd4b285b0207ce1b490ff5",
+        "mobilesdk_app_id": "1:128707301604:android:617520422869a6aa865cf1",
         "android_client_info": {
           "package_name": "com.example.qubit_geo"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "839977485872-t2fhn3usqmhstv8u9eems4gidiiq7apv.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAu6siBdeKvNP9ahYuB5sl5qysj2_M9-G4"
+          "current_key": "AIzaSyCQ4gX011SosO2aSQvab0UdNdu_HM34as8"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "839977485872-t2fhn3usqmhstv8u9eems4gidiiq7apv.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "839977485872-t67mn20g991rcal86cipk67p3hokpcrp.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.qubitGeo"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

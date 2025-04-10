@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:qubit_geo/app/ui/maps/map_view.dart';
+import 'package:qubit_geo/shared/controllers/geolocator_controller.dart';
 import 'package:qubit_geo/shared/controllers/user_controller.dart';
 import 'package:qubit_geo/shared/ui/home/home.dart';
 import 'package:qubit_geo/shared/ui/unknown_page/unknown_page.dart';
@@ -21,9 +23,16 @@ import 'package:qubit_geo/shared/ui/theme/util.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  //await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-  //await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
-  //FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+  await FirebaseAppCheck.instance.activate(
+    webProvider: ReCaptchaV3Provider(
+      '6LfKgxIrAAAAAOyCLhQb6Me7uJL-YQG_I1jmShya',
+    ),
+    androidProvider: AndroidProvider.playIntegrity,
+    appleProvider: AppleProvider.appAttest,
+  );
+  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+  await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
+  FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
   runApp(const MyApp());
 }
 
@@ -33,6 +42,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userController = Get.put(UserController());
+    final GeolocatorController geolocatorController = Get.put(
+      GeolocatorController(),
+    );
+    geolocatorController.recordPositionEnabled.value = false;
     final brightness = View.of(context).platformDispatcher.platformBrightness;
 
     TextTheme textTheme = createTextTheme(

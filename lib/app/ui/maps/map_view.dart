@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:qubit_geo/app/controllers/geolocator_controller.dart';
 import 'package:qubit_geo/app/controllers/my_map_controller.dart';
 import 'package:qubit_geo/app/ui/maps/map_detail.dart';
 import 'package:qubit_geo/shared/controllers/app_controller.dart';
+import 'package:qubit_geo/shared/controllers/geolocator_controller.dart';
 import 'package:qubit_geo/shared/ui/menu/main_menu.dart';
 import 'package:qubit_geo/shared/ui/scaffold/my_scaffold.dart';
 

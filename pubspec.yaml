@@ -49,6 +49,7 @@ dependencies:
   accordion: ^2.6.0
   geolocator: ^13.0.3
   latlong2: ^0.9.1
+  firebase_app_check: ^0.3.2+5
   
 
 dev_dependencies:
