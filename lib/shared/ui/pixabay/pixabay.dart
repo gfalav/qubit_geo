@@ -11,7 +11,7 @@ class Pixabay extends StatelessWidget {
     final PixabayController pixabayController = Get.put(PixabayController());
 
     return Obx(
-      () => Center(
+      () => Container(
         child:
             pixabayController.images.isNotEmpty
                 ? Image.network(
@@ -19,7 +19,6 @@ class Pixabay extends StatelessWidget {
                   pixabayController.images[Random().nextInt(
                     pixabayController.images.length,
                   )],
-                  width: 600,
                 )
                 : Text("Pixabay"),
       ),
