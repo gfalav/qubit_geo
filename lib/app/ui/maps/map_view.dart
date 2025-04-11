@@ -53,6 +53,16 @@ class MapView extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: FloatingActionButton(
+                heroTag: 'getPoints',
+                onPressed: () {
+                  myMapController.getPoints();
+                },
+                child: Icon(Icons.history),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: FloatingActionButton(
                 heroTag: 'rotation',
                 onPressed: () {
                   myMapController.rotationFlag.value = true;

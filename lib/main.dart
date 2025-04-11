@@ -30,9 +30,11 @@ void main() async {
     androidProvider: AndroidProvider.playIntegrity,
     appleProvider: AppleProvider.appAttest,
   );
-  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-  await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
-  FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+  //emuladores
+  //await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+  //await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
+  //FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+
   runApp(const MyApp());
 }
 
