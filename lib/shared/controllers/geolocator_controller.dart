@@ -13,6 +13,7 @@ class GeolocatorController extends GetxController {
   final speed = 0.0.obs;
   final alt = 0.0.obs;
   final accur = 0.0.obs;
+  final speedAcc = 0.0.obs; //Precisión de la velocidad
 
   final recordPositionEnabled = false.obs; //Graba o no en BD la posición
 
@@ -101,6 +102,7 @@ class GeolocatorController extends GetxController {
         speed.value = position.speed;
         alt.value = position.altitude;
         accur.value = position.accuracy;
+        speedAcc.value = position.speedAccuracy;
         //guarda en firestore si está activa la flag
         if (recordPositionEnabled.value) {
           final pos = <String, dynamic>{
@@ -110,6 +112,7 @@ class GeolocatorController extends GetxController {
             'speed': position.speed,
             'accuracy': position.accuracy,
             'name': userController.displayName.value,
+            'speedAcc': position.speedAccuracy,
           };
           await db
               .collection('lastPosition')
@@ -128,5 +131,6 @@ class GeolocatorController extends GetxController {
     speed.value = position.speed;
     alt.value = position.altitude;
     accur.value = position.accuracy;
+    speedAcc.value = position.speedAccuracy;
   }
 }
