@@ -93,7 +93,7 @@ class GeolocatorController extends GetxController {
         position.latitude,
         position.longitude,
       );
-      if (distance > 20) {
+      if (distance > 10) {
         //actualiza position
         lat.value = position.latitude;
         lng.value = position.longitude;

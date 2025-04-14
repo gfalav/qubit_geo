@@ -17,10 +17,11 @@ class MyMapController extends GetxController {
   final zoomIn = false.obs;
   final zoomOut = false.obs;
 
-  final List<LatLng> points = <LatLng>[].obs;
+  final List<Polyline> pLines = <Polyline>[].obs;
   final List<Marker> markers = <Marker>[].obs;
 
   void getPoints() async {
+    print("Entre!!!");
     NumberFormat numberFormat = NumberFormat("#,##0", "en_US");
     QueryDocumentSnapshot<Map<String, dynamic>>? ant;
     var difM = 0.0;
@@ -29,52 +30,52 @@ class MyMapController extends GetxController {
 
     final db = FirebaseFirestore.instance;
     final pointsRef = db.collection("positions");
-    points.removeWhere((_) => true);
+    pLines.removeWhere((_) => true);
+    markers.removeWhere((_) => true);
+
     pointsRef
         .where(
           "date",
-          isGreaterThan: DateTime.now().subtract(Duration(days: 7)),
+          isGreaterThan: DateTime.now().subtract(Duration(days: 1)),
         )
         .orderBy("date", descending: false)
         .get()
         .then((res) {
           for (var i in res.docs) {
-            difM =
-                ant != null
-                    ? Geolocator.distanceBetween(
-                      ant!.data()['lat'],
-                      ant!.data()['lng'],
-                      i.data()['lat'],
-                      i.data()['lng'],
-                    )
-                    : 0.0;
-            var timeA = ant != null ? ant!.data()['date'].toDate() : 0.0;
-            var timeB = i.data()['date'].toDate();
-            difT = ant != null ? timeB.difference(timeA).inMilliseconds : 0.0;
-            speed = difM / difT * 3600;
-            points.add(LatLng(i.data()['lat'], i.data()['lng']));
-            markers.add(
-              Marker(
-                point: LatLng(i.data()['lat'], i.data()['lng']),
-                child: Text(
-                  numberFormat.format(speed),
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: () {
-                      if (speed < 40) {
-                        return Colors.green;
-                      } else if (speed < 80) {
-                        return Colors.yellow;
-                      } else if (speed < 110) {
-                        return Colors.orange;
-                      } else {
-                        return Colors.red;
-                      }
-                    }(),
-                  ),
+            if (ant != null) {
+              difM = Geolocator.distanceBetween(
+                ant!.data()['lat'],
+                ant!.data()['lng'],
+                i.data()['lat'],
+                i.data()['lng'],
+              );
+              difT =
+                  i
+                      .data()['date']
+                      .toDate()
+                      .difference(ant!.data()['date'].toDate())
+                      .inMilliseconds
+                      .toDouble();
+              speed = difM / difT * 3600;
+              pLines.add(
+                Polyline(
+                  points: [
+                    LatLng(ant!.data()['lat'], ant!.data()['lng']),
+                    LatLng(i.data()['lat'], i.data()['lng']),
+                  ],
+                  color:
+                      speed < 40
+                          ? Colors.green
+                          : speed < 80
+                          ? Colors.yellow
+                          : speed < 110
+                          ? Colors.orange
+                          : Colors.red,
+                  strokeWidth: 3.0,
                 ),
-              ),
-            );
+              );
+            }
+
             ant = i;
           }
         });
