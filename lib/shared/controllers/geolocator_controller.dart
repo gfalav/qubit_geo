@@ -10,7 +10,6 @@ class GeolocatorController extends GetxController {
 
   final lat = 0.0.obs;
   final lng = 0.0.obs;
-  final speed = 0.0.obs;
   final alt = 0.0.obs;
   final accur = 0.0.obs;
 
@@ -94,11 +93,10 @@ class GeolocatorController extends GetxController {
         position.latitude,
         position.longitude,
       );
-      if (distance > 10) {
+      if (distance > 20) {
         //actualiza position
         lat.value = position.latitude;
         lng.value = position.longitude;
-        speed.value = position.speed;
         alt.value = position.altitude;
         accur.value = position.accuracy;
         //guarda en firestore si está activa la flag
@@ -107,9 +105,8 @@ class GeolocatorController extends GetxController {
             'date': position.timestamp,
             'lat': position.latitude,
             'lng': position.longitude,
-            'speed': position.speed,
             'accuracy': position.accuracy,
-            'name': userController.displayName.value,
+            'name': userController.uid.value,
           };
           await db
               .collection('lastPosition')
@@ -125,7 +122,6 @@ class GeolocatorController extends GetxController {
     final position = await Geolocator.getCurrentPosition();
     lat.value = position.latitude;
     lng.value = position.longitude;
-    speed.value = position.speed;
     alt.value = position.altitude;
     accur.value = position.accuracy;
   }

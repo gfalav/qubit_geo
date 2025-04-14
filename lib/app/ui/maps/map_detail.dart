@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:qubit_geo/app/controllers/my_map_controller.dart';
 import 'package:qubit_geo/shared/controllers/geolocator_controller.dart';
-import 'package:qubit_geo/shared/ui/users/useraction/circle_user.dart';
 
 class MapDetail extends StatelessWidget {
   const MapDetail({super.key});
@@ -73,17 +72,7 @@ class MapDetail extends StatelessWidget {
           TileLayer(
             urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
           ),
-          MarkerLayer(
-            markers: [
-              Marker(
-                point: LatLng(
-                  geolocatorController.lat.value,
-                  geolocatorController.lng.value,
-                ),
-                child: CircleUser(),
-              ),
-            ],
-          ),
+          MarkerLayer(markers: myMapController.markers),
           PolylineLayer(
             polylines: [
               Polyline(
