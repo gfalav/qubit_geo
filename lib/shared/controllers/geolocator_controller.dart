@@ -102,10 +102,11 @@ class GeolocatorController extends GetxController {
         //guarda en firestore si está activa la flag
         if (recordPositionEnabled.value) {
           final pos = <String, dynamic>{
-            'date': position.timestamp,
             'lat': position.latitude,
             'lng': position.longitude,
-            'accuracy': position.accuracy,
+            'alt': position.altitude,
+            'accur': position.accuracy,
+            'date': position.timestamp,
             'uid': userController.uid.value,
           };
           await db.collection('positions').add(pos);
