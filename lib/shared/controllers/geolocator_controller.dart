@@ -106,12 +106,8 @@ class GeolocatorController extends GetxController {
             'lat': position.latitude,
             'lng': position.longitude,
             'accuracy': position.accuracy,
-            'name': userController.uid.value,
+            'uid': userController.uid.value,
           };
-          await db
-              .collection('lastPosition')
-              .doc(userController.uid.toString())
-              .set(pos);
           await db.collection('positions').add(pos);
         }
       }
