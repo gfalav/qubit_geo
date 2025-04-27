@@ -85,21 +85,10 @@ class MapDetail extends StatelessWidget {
             ],
           ),
           PolylineLayer(
-            polylines: [
-              Polyline(
-                points:
-                    myMapController.points.isNotEmpty
-                        ? myMapController.points
-                        : [
-                          LatLng(
-                            geolocatorController.lat.value,
-                            geolocatorController.lng.value,
-                          ),
-                        ],
-                color: Colors.red,
-                strokeWidth: 5,
-              ),
-            ],
+            polylines:
+                myMapController.pLines.isNotEmpty
+                    ? myMapController.pLines
+                    : <Polyline>[],
           ),
         ],
       ),
