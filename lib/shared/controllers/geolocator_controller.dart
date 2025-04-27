@@ -48,7 +48,7 @@ class GeolocatorController extends GetxController {
         accuracy: LocationAccuracy.high,
         distanceFilter: 10,
         forceLocationManager: true,
-        intervalDuration: const Duration(seconds: 3),
+        intervalDuration: const Duration(seconds: 30),
         foregroundNotificationConfig: const ForegroundNotificationConfig(
           notificationText:
               "Example app will continue to receive your location even when you aren't using it",
